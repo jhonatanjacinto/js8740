@@ -3,10 +3,13 @@
 <link rel="stylesheet" href="styles/cake.css"/>
 
 <header>
-    <input type="image" src="images/libCake/recarregar.svg">
-    <input type="text" value="blank.html">
+    <input type="image" src="images/libCake/recarregar.svg" onclick="window.location.reload();">
+    <input type="text" id="$inputEndereco" value="blank.html">
 </header>
 
-<iframe src="blank" frameborder="0"></iframe>
+<iframe id="$janelaPrincipal" src="blank" frameborder="0"></iframe>
 
 <script src="scripts/cake.js"></script>
+<script src="scripts/pedeInfosIniciais/termosDeUso.js"></script>
+<script src="scripts/pedeInfosIniciais/pedeAceitouSalvar.js"></script>
+<script src="scripts/pedeInfosIniciais/pedePaginaInicial.js"></script>

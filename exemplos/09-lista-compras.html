@@ -18,3 +18,72 @@ Nome do item: <br>
     Ordenar de forma Decrescente
 </button>
 <p id="mostrador">Sua lista nesse momento está vazia :/</p>
+
+<script>
+
+    const lista = [];
+
+    btnAdicionar.onclick = () => adicionarOuExcluir('adicionar');
+    btnExcluir.onclick = () => adicionarOuExcluir('excluir');
+    btnOrdenarCrescente.onclick = () => ordenar('crescente');
+    btnOrdenarDecrescente.onclick = () => ordenar('decrescente');
+
+    function ordenar(ordem) 
+    {
+        lista.sort(function(item1, item2) {
+            return item1.localeCompare(item2);
+        });
+
+        if (ordem === 'decrescente') {
+            lista.reverse();
+        }
+
+        exibirLista();
+    }
+
+    function adicionarOuExcluir(acao = 'adicionar') 
+    {
+        let item = campoItem.value.trim();
+        let itemPosicao = lista.findIndex(itemLista => {
+            return itemLista.localeCompare(item, undefined, { sensitivity: 'base'}) === 0;
+        });
+
+        if (item === '') {
+            alert('Por favor, digite um fucking item!!!');
+        }
+
+        if (acao === 'adicionar') {
+            if (itemPosicao < 0) {
+                lista.push(item);
+            }
+            else {
+                lista[itemPosicao] = item;
+            }
+        }
+        else {
+            if (itemPosicao >= 0) {
+                lista.splice(itemPosicao, 1);
+            }
+            else {
+                alert('Item não existe na lista!');
+            }
+        }
+
+        ordenar('crescente');
+        campoItem.focus();
+        campoItem.value = '';
+    }
+
+    function exibirLista()
+    {
+        mostrador.innerHTML = `
+            Sua lista de supermercado tem <b>${lista.length} item(ns)</b>. Eles são: <br>
+            <ol>
+                <li>
+                    ${lista.join('</li><li>')}
+                </li>
+            </ol>
+        `;
+    }
+
+</script>

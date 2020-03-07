@@ -1,0 +1,30 @@
+<meta charset="utf-8">
+<h1>WebStorage: localStorage / sessionStorage</h1>
+<script>
+
+    let sessionInfo = sessionStorage.getItem('nomeUsuario');
+    let localInfo = localStorage.getItem('nomeUsuario');
+
+    if (!sessionInfo && !localInfo) {
+        let nome = prompt('Informe seu nome para ser armazenado:');
+        sessionStorage.setItem('nomeUsuario', nome);
+        localStorage.setItem('nomeUsuario', nome);
+    }
+
+    document.write(`
+        Info do LocalStorage: ${ localStorage.getItem('nomeUsuario') } <br>
+        Info do Session Storage: ${ sessionStorage.getItem('nomeUsuario')} <br>
+        <button onclick="excluir();">
+            Excluir Informações
+        </button>
+    `);
+
+    function excluir()
+    {
+        sessionStorage.clear();
+        localStorage.clear();
+        alert('Dados excluídos com sucesso!');
+        window.location.reload();
+    }
+
+</script>
