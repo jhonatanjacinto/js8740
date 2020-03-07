@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Carrinho de Compras - MVC</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- <script src="//unpkg.com/vanilla-masker@1.1.1/build/vanilla-masker.min.js"></script> -->
+    <script src="scripts/app.js" type="module" defer></script>
+</head>
+<body>
+
+    <div class="container">
+        <h1 class="display-4 mb-3 mt-3">Carrinho de Compras</h1>
+        <hr>
+        <div class="row">
+            <!-- Formulário -->
+            <div class="col-3">
+                <div class="form-group">
+                    <label for="$produto">* Produto:</label>
+                    <select id="$produto" class="custom-select">
+                        <option value="">-- Selecione um Produto --</option>
+                        <option value="Produto 1" data-preco="150.00">Produto 1</option>
+                        <option value="Produto 2" data-preco="69.89">Produto 2</option>
+                        <option value="Produto 3" data-preco="23.50">Produto 3</option>
+                        <option value="Produto 4" data-preco="257.80">Produto 4</option>
+                        <option value="Produto 5" data-preco="33.42">Produto 5</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="$valorUnitario">* Valor Unitário:</label>
+                    <output id="$valorUnitario" class="form-control" value="R$ 0,00">R$ 0,00</output>
+                </div>
+                <div class="form-group">
+                    <label for="$quantidade">* Quantidade:</label>
+                    <input type="number" class="form-control" id="$quantidade" value="1" min="1">
+                </div>
+                <div class="form-group">
+                    <button id="$btnForm" class="btn btn-primary">
+                        Adicionar ao Carrinho
+                    </button>
+                </div>
+            </div>
+            <!-- /Formulário-->
+
+            <!-- Tabela -->
+            <div class="col-9">
+                <table class="table table-striped mb-5">
+                    <thead>
+                        <tr>
+                            <th>Nome do Produto</th>
+                            <th>Preço Unitário</th>
+                            <th>Quantidade</th>
+                            <th>Total</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="$produtosTabela">
+                        <!-- Exibir os produtos aqui -->
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td align="right" colspan="3">
+                                <strong>Total da Compra:</strong>
+                            </td>
+                            <td id="$totalCompra" colspan="2">
+                                R$ 0,00
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <!-- /Tabela -->
+        </div>
+    </div>
+
+</body>
+</html>

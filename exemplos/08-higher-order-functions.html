@@ -1,0 +1,34 @@
+<meta charset="utf-8">
+<h1>Higher-Order Functions</h1>
+<script>
+
+    const clientes = [
+        { nome: 'Paulo França', idade: 26, sexo: 'M', renda: 3500 },
+        { nome: 'Maria Oliveira', idade: 32, sexo: 'F', renda: 5500 },
+        { nome: 'José Silva', idade: 52, sexo: 'M', renda: 1800 },
+        { nome: 'Carlos Bragança', idade: 21, sexo: 'M', renda: 4000 },
+        { nome: 'Fernanda Vaz', idade: 25, sexo: 'F', renda: 3800 },
+        { nome: 'Josy Silva', idade: 16, sexo: 'F', renda: 1600 },
+    ];
+    console.log(clientes);
+
+    // forEach(): percorre itens de uma lista
+    clientes.forEach(cliente => console.log(cliente.nome));
+
+    // filter(): filtra os itens de um array que atender a condição especificada
+    const listaHomensAcima2Mil = clientes.filter(cliente => cliente.renda > 2000 && cliente.sexo === 'M');
+    console.log(listaHomensAcima2Mil);
+
+    // find(): retorna o primeiro item do array que atende a condição especificada (retorna o valor do item)
+    const mulherMenos30 = clientes.find(cliente => cliente.idade < 30 && cliente.sexo === 'F');
+    console.log(mulherMenos30);
+
+    // findIndex(): retorna a posição do primeiro elemento encontrado
+    const posicao = clientes.findIndex(cliente => cliente.idade < 30 && cliente.sexo === 'F');
+    console.log(posicao);
+
+    // reduce(): reduz os valores de um array a um único
+    let somaRendas = clientes.reduce((acumulador, cliente) => acumulador + cliente.renda, 0);
+    console.log(somaRendas);
+
+</script>

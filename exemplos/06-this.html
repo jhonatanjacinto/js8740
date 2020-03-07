@@ -1,0 +1,49 @@
+<meta charset="utf-8">
+<h1>Comando "this"</h1>
+<script>
+
+    'use strict';
+
+    console.log(this); // Window
+    var nome = "Jhonatan";
+
+    function teste()
+    {
+        var nome = "Roberto";
+        console.log(this.nome);
+    }
+    window.teste();
+
+    // métodos de objetos
+    const pessoa = {
+        nome: 'Rodrigo',
+        idade: 28,
+        exibirNome: function() {
+            console.log(this.nome); // "Rodrigo"
+        }
+    }
+    pessoa.exibirNome();
+
+    // métodos com arrow functions 
+    const pessoa2 = {
+        nome: 'Paulo',
+        exibirNome: () => {
+            console.log(this.nome); // this = window // this.nome = "Jhonatan"
+        }
+    }
+    pessoa2.exibirNome();
+
+    const guerreiros = {
+        time: 'Guerreiros Z',
+        membros: [ 'Goku', 'Vejeta', 'Gohan'],
+        mostrarMembros: function() {
+            // console.log(this.time);
+            this.membros.forEach((membro) => {
+                console.log('Time: ' + this.time);
+                console.log(membro);
+            });
+        }
+    }
+    guerreiros.mostrarMembros();
+
+</script>

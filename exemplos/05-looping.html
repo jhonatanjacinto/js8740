@@ -1,0 +1,27 @@
+<meta charset="utf-8">
+<h1>Estrutura de Looping (repetição)</h1>
+<script>
+
+    let de = 1;
+    let ate = parseInt(prompt('Digite um número entre 1 e 20:'));
+    // while 
+    while (ate < 1 || ate > 20 || isNaN(ate)) {
+        ate = parseInt(prompt('Número inválido! Informe um número entre 1 e 20:'));
+    }
+
+    // for
+    for (let i = de; i <= ate; i++) {
+        alert(i);
+    }
+
+    // do... while
+    let f = de;
+    do {
+        alert(f);
+        f++;
+    }
+    while(f <= ate);
+
+    
+
+</script>

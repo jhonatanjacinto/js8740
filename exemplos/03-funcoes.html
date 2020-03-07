@@ -1,0 +1,25 @@
+<meta charset="utf-8">
+<h1>Funções</h1>
+<script>
+
+    // function declaration
+    mostrarMensagem();
+    function mostrarMensagem() {
+        alert('Mostrando uma mensagem com function declaration');
+    }
+
+    // function expression
+    // somar(5, 15); // não pode porque somar é undefined nesse momento
+    var somar = function(n1, n2) {
+        alert(n1 + n2);
+    }
+    somar(10, 25); // okay porque somar já existe
+
+    // Arrow function
+    let dividir = (n1, n2) => alert( n1 / n2 );
+    dividir(10, 5);
+
+    let dizerOla = nome => alert('Olá, ' + nome);
+    dizerOla('Adriana');
+
+</script>

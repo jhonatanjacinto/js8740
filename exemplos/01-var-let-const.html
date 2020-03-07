@@ -1,0 +1,86 @@
+<meta charset="utf-8">
+<h1>JavaScript: var, let e const</h1>
+<script>
+
+    /* 
+        'use strict' proibe:
+            1) o comando with;
+            2) omissão das palavras-chave let, var e const
+            3) funções com parâmetros duplicados
+            4) muda o comportamento da palavra-chave "this"
+    */
+    'use strict';
+
+    var a = 999;
+    let a2 = 888;
+    if (true) {
+        var b = a;
+    }
+    console.log(b); // imprime 999
+
+    function teste() {
+        var c = a;
+    }
+    // console.log(c); // ReferenceError
+
+    // Variáveis com o comando "let"
+    if (true) {
+        let d = a;
+    }
+    // console.log('D: ', d); // Okay
+
+    for (var e = 1; e <= 10; e++) {
+        console.log('e: ', e);
+    }
+    console.log(e); // 11
+
+    for (let f = 1; f <= 10; f++) {
+        console.log('f: ', f);
+    }
+    // console.log(f); // ReferenceError
+
+    // Constantes
+    const x = 10;
+    // x = 11; // TypeError
+    const listaDados = ['Gato', 12, 'Rodrigo', true, 17.5];
+    console.log('Lista Original:', listaDados);
+    listaDados.push('Jhonatan');
+    listaDados.shift();
+    listaDados.unshift('Adriana');
+    listaDados[0] = 'Adriano';
+    console.log(listaDados);
+    // listaDados = []; // TypeError
+
+    // Objetos em JavaScript
+    const pessoa = {
+        nome: 'Fabiana', // propriedades do objeto
+        sobrenome: 'Oliveira',
+        idade: 48,
+        digaOla: function() {  //método do objeto
+            console.log('Olá, meus queridos!!!');
+        }
+    };
+
+    pessoa.nome = "Henrique";
+    pessoa.cidade = "Osasco";
+    console.log('Nome da pessoa: ', pessoa.nome);
+    pessoa.digaOla();
+    console.log(pessoa);
+
+    console.log(globalThis); // window
+
+    let nome = "Jhonatan";
+    let sobrenome = "Jacinto";
+    let nomeCompleto = nome + " " + sobrenome;
+    let nomeCompleto2 = `${nome} ${sobrenome}`;
+    console.log(nomeCompleto);
+
+    let email = `
+        Olá, ${nomeCliente} <br>
+        Recebemos us
+        <strong>Nome: </strong> ${nomeCliente} <br>
+        <strong>Email: </strong> ${emailCliente}
+    `;
+
+
+</script>

@@ -1,0 +1,36 @@
+<meta charset="utf-8">
+<h1>Funções de Array</h1>
+<script>
+
+    const animais = ['Gato', 'Cachorro', 'Rato'];
+    console.log('Original: ', animais);
+
+    // pop(): remove o último item do array e retorna esse item
+    let animalExcluido = animais.pop();
+    console.log('Excluido: ', animalExcluido);
+    console.log('lista no momento: ', animais);
+
+    // shift(): remove o primeiro item do array e retorna esse item
+    animalExcluido = animais.shift();
+    console.log('Excluído: ', animalExcluido);
+    console.log('Lista no momento: ', animais);
+
+    // push(): adiciona um ou mais itens no final do array
+    animais.push('Papagaio', 'Leão', 'Lobo');
+    console.log('lista atualizada: ', animais);
+
+    // unshift(): adiciona um ou mais itens no início do array
+    animais.unshift('Borboleta', 'Foca');
+    console.log('lista atualizada novamente: ', animais);
+
+    // splice(): remove ou adiciona itens em posições específicas
+    animais.splice(1, 2);
+    console.log('lista: ', animais);
+    // adiciona na posição específica
+    animais.splice(2, 0, "Raposa");
+    console.log('lista :', animais);
+
+    // join(): define como os itens de um array serão separados (retorna uma string)
+    console.log('Animais: ', animais.join(`\n`));
+
+</script>

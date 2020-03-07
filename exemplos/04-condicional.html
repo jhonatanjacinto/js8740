@@ -1,0 +1,54 @@
+<meta charset="utf-8">
+<h1>Estrutura Condicional: if, switch e operador ternário</h1>
+<p id="mostrador"></p>
+<script>
+
+    let idade = parseInt(prompt('Informe sua Idade:'));
+    let estado = prompt('Digite a sigla do seu estado:');
+    let sexo = prompt('Digite seu sexo: (M ou F)');
+    let fraseIdade;
+
+    if (idade >= 0 && idade <= 10) {
+        fraseIdade = 'Você é uma Criança!';
+    }
+    else if (idade >= 11 && idade <= 17) {
+        fraseIdade = 'Você é um adolescente!';
+    }
+    else if (idade >= 18) {
+        fraseIdade = 'Você é um Adulto!';
+    }
+    else {
+        fraseIdade = 'Idade inválida!';
+    }
+
+    // switch para checar o estado da pessoa
+    let regiao;
+    let sigla = estado.toUpperCase();
+    switch(sigla) {
+        case 'SP':
+        case 'MG':
+        case 'RJ':
+        case 'ES':
+            regiao = 'Sua região é a Sudeste!';
+            break;
+        case 'SC':
+        case 'PR':
+        case 'RS':
+            regiao = 'Sua região é a Sul!';
+            break;
+        default: 
+            regiao = 'Sua região é outra qualquer!';
+            break;
+    }
+
+    // Operador Ternário
+    let mensagem = (idade === 18 && sexo.toUpperCase() === 'M') ? 'Fazer alistamento militar' : '';
+    mostrador.innerHTML = `
+        Olá, Usuário! <br>
+        Seu sexo é: ${sexo.toUpperCase()} <br>
+        Sua idade é: ${idade} anos <br>
+        ${regiao} <br>
+        ${mensagem}
+    `;
+
+</script>
