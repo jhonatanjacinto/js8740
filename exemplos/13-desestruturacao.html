@@ -1,0 +1,36 @@
+<meta charset="utf-8">
+<h1>Destructuring Assignment / Atribuição por Desestruturação</h1>
+<script>
+
+    let a;
+    let b;
+    [a, b] = [2, 3];
+    [a, b] = [b, a];
+    console.log('a:', a);
+    console.log('b:', b);
+
+    const nomes = ['Adriana', 'Mateus', 'Pedro'];
+    const animais = ['Gato', 'Pato', 'Rato'];
+    const valores = [1, 2, 3, ...nomes, 4, 5, ...animais, 6];
+    console.log(valores);
+    let [um, dois, tres, ...resto] = valores;
+    console.log(um, dois, tres, resto);
+
+    // Destruturação de Objetos
+    const carro = {
+        marca: 'Chevrolet',
+        nome: 'Prisma',
+        tipo: 'LTZ',
+        cambio: 'Automático',
+        preco: 47000,
+        opcionais: ['Vidros Elétricos', 'Travas Elétricas', 'Computador de Bordo']
+    }
+
+    let { marca, nome, tipo: categoria, preco } = carro;
+    console.log('Nome do Carro: ', nome);
+    console.log('Tipo: ', categoria);
+    console.log('Marca:', marca);
+
+
+
+</script>

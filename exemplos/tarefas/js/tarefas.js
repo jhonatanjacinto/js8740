@@ -6,7 +6,7 @@ const listaTarefas = [];
  * @param {string} tarefa Nome da tarefa a ser adicionada na lista
  * @returns {void}
  */
-function adicionarTarefa(tarefa)
+export function adicionarTarefa(tarefa)
 {
     let tarefaExiste = listaTarefas.find(tarefaLista => {
         return tarefaLista.localeCompare(tarefa, undefined, { sensitivity: 'base' }) === 0; 
@@ -25,7 +25,7 @@ function adicionarTarefa(tarefa)
  * Retorna a lista completa de tarefas
  * @returns {Array<string>}
  */
-function getTarefas()
+export function getTarefas()
 {
     return listaTarefas;
 }
@@ -35,7 +35,7 @@ function getTarefas()
  * @param {number} posicao Posição do item a ser removido no Array de tarefas
  * @returns {void}
  */
-function removerTarefa(posicao)
+export function removerTarefa(posicao)
 {
     if (posicao < 0 || posicao >= listaTarefas.length) {
         alert('Posição fornecida é inválida!');

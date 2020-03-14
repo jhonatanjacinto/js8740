@@ -1,20 +1,18 @@
+import { aceitouSalvar } from "../storage/aceitouSalvar.js";
+import { paginaInicial, setPaginaInicial } from "../storage/paginaInicial.js";
+import { formataEndereco } from "../endereco/formataEndereco.js";
+
 if (aceitouSalvar === true)
 {
-    let paginaInicial = localStorage.getItem('paginaInicial');
-    let regex = /^https?:\/\/.+/;
+    let pagina = paginaInicial;
 
-    if (!paginaInicial) {
-        paginaInicial = prompt('Escolha a página inicial:');
+    if (!pagina) {
+        pagina = prompt('Escolha a página inicial:');
     }
 
-    if (paginaInicial) 
+    if (pagina) 
     {
-        if (!regex.test(paginaInicial)) {
-            paginaInicial = 'http://' + paginaInicial;
-        }
-
-        $janelaPrincipal.src = paginaInicial;
-        $inputEndereco.value = paginaInicial;
-        localStorage.setItem('paginaInicial', paginaInicial);
+        pagina = formataEndereco(pagina);
+        setPaginaInicial(pagina);
     }
 }

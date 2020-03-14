@@ -3,13 +3,17 @@
 <link rel="stylesheet" href="styles/cake.css"/>
 
 <header>
+    <input type="image" src="images/libCake/seta-voltar.svg" id="$btnVoltar">
+    <input type="image" src="images/libCake/seta-avancar.svg" id="$btnAvancar">
     <input type="image" src="images/libCake/recarregar.svg" onclick="window.location.reload();">
+    <input type="image" src="images/libCake/casa.svg" id="$btnHome">
     <input type="text" id="$inputEndereco" value="blank.html">
+    <a href="config.html">
+        <img src="images/libCake/engrenagem.svg" alt="Ir para as configurações">
+    </a>
 </header>
 
 <iframe id="$janelaPrincipal" src="blank" frameborder="0"></iframe>
 
 <script src="scripts/cake.js"></script>
-<script src="scripts/pedeInfosIniciais/termosDeUso.js"></script>
-<script src="scripts/pedeInfosIniciais/pedeAceitouSalvar.js"></script>
-<script src="scripts/pedeInfosIniciais/pedePaginaInicial.js"></script>
+<script src="scripts/main.js" type="module"></script>
