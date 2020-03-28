@@ -1,0 +1,64 @@
+<meta charset="utf-8">
+<h1>Funções Construtoras</h1>
+<script>
+
+    // Objeto Literal
+    const carro1 = {
+        marca: 'kfjalksdjfa',
+        preco: 0,
+        modelo: 'asdkfjakls',
+        andar: function() {
+
+        }
+    };
+
+
+    // Função Construtora de Objetos // ES5
+    function Carro(marca, modelo, preco, opcionais = [], chassi)
+    {
+        this.marca = marca;
+        this.modelo = modelo;
+        this.preco = preco;
+        this.chassi = chassi;
+        this.opcionais = opcionais;
+    }
+
+    Carro.prototype.andar = function() {
+        console.log('Vrum vrum...');
+    }
+
+
+    // Objeto criado a partir da função construtora
+    const carro2 = new Carro('Ford', 'Ka Sedan', 35000, [], 'sdfasdfa');
+    const carro3 = new Carro('Chevrolet', 'Chevete', 5000);
+
+    // tipo das constantes
+    // console.log(typeof carro1);
+    // console.log(typeof carro2);
+    // console.log(carro1);
+    // console.log(carro2);
+    // console.log(carro1 instanceof Carro); // false
+    // console.log(carro2 instanceof Carro); // true
+
+    function registarCarro(carro)
+    {
+        // carro tem que ter:
+        // marca, modelo, preco, opcionais (Array), chassi
+        // metodo: andar()
+        if (carro instanceof Carro === false) {
+            const erro = new Error('Carro precisa ser uma instância da classe "Carro".');
+            throw erro;
+        }
+
+        console.log('OK... passou da validação!!!');
+        console.log('Marca:', carro.marca);
+        console.log('Chassi:', carro.chassi);
+        carro.andar();
+    }
+
+    // registarCarro(carro2); // OK, carro2 é uma instância de "Carro"
+    // registarCarro('Jhonatan'); // Dá pau pq estamos passando uma string
+    // registarCarro(carro1); // Dá pau pq carro1 não é instância de "Carro"
+    // registarCarro(window); // Dá pau pq window não é instância de "Carro"
+
+</script>

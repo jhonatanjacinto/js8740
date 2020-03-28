@@ -1,0 +1,63 @@
+<meta charset="utf-8">
+<h1>ES6 Classes</h1>
+<script>
+
+    // ES6+ utilizamos classes na criação de objetos especializados
+    class Carro {
+        constructor(marca, modelo, chassi, opcionais = []) {
+            this.marca = marca;
+            this.modelo = modelo;
+            this.chassi = chassi;
+            this.opcionais = opcionais;
+        }
+
+        // método associado ao OBJETO
+        mostrarDadosCarro = function () {
+            console.log('Dados do carro: ', this.marca, this.modelo);
+        }
+
+        // método está associado ao PROTOTYPE
+        andar() {
+            console.log('VRUM vrum...');
+        }
+
+        // Sobrescreve o método toString() da classe "Object"
+        toString() {
+            return 'Este é um objeto da classe Carro';
+        }
+    }
+
+    const carro = new Carro();
+    // console.log(carro);
+    // alert(carro);
+
+    class Parametros {
+        constructor(url) {
+            this.url = url;
+        }
+
+        gerarURL() {
+            const listaParametros = [];
+            
+            for (let prop in this) 
+            {
+                if (prop != 'url') {
+                    let valor = this[prop];
+                    listaParametros.push(prop + '=' + valor);
+                }
+            }
+
+            return this.url + '?' + listaParametros.join('&');
+        }
+
+        toString() {
+            return this.gerarURL();
+        }
+    }
+
+    const params = new Parametros('http://caelum.com.br');
+    params.curso = 555;
+    params.origem = 'facebook';
+    console.log('URL gerada: ' + params);
+
+</script>
