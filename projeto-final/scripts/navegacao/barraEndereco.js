@@ -1,5 +1,6 @@
 import { carregarPagina } from "./carregarPagina.js";
 import { Endereco } from "../endereco/Endereco.js";
+import { CakeEnderecoInvalidoError } from "../erros/CakeEnderecoInvalidoError.js";
 
 let endereco;
 
@@ -14,8 +15,18 @@ $janelaPrincipal.addEventListener('load', exibirEnderecoResumido);
 
 $inputEndereco.addEventListener('keypress', ({ key }) => {
     if (key === 'Enter') {
-        endereco = new Endereco($inputEndereco.value);
-        carregarPagina(endereco);
+        try {
+            endereco = new Endereco($inputEndereco.value);
+            carregarPagina(endereco);
+        }
+        catch(erro) {
+            if (erro instanceof CakeEnderecoInvalidoError) {
+                alert(erro.message);
+            }
+            else {
+                console.error(erro);
+            }
+        }
     }
 });
 

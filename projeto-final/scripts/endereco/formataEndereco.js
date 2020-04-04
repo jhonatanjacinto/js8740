@@ -4,7 +4,7 @@ export function formataEndereco(endereco)
         return 'blank';
     }
 
-    let regex = /^https?:\/\/.+/;
+    let regex = /^https?:\/\/(.+)?/;
     if (!regex.test(endereco)) {
         endereco = 'http://' + endereco;
     }

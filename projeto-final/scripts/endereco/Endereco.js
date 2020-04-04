@@ -1,4 +1,5 @@
 import { formataEndereco } from "./formataEndereco.js";
+import { CakeEnderecoInvalidoError } from "../erros/CakeEnderecoInvalidoError.js";
 
 export function Endereco(endereco)
 {
@@ -16,9 +17,15 @@ export function Endereco(endereco)
         enderecoResumido = enderecoCorrigido;
     }
     else {
-        const url = new URL(enderecoCorrigido);
-        enderecoCompleto = url.toString();
-        enderecoResumido = url.hostname;
+        let url;
+        try {
+            url = new URL(enderecoCorrigido);
+            enderecoCompleto = url.toString();
+            enderecoResumido = url.hostname;
+        }
+        catch(erro) {
+            throw new CakeEnderecoInvalidoError(enderecoCorrigido);
+        }
     }
 
     this.urlCompleta = enderecoCompleto;
