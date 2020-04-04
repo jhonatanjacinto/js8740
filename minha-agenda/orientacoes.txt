@@ -1,0 +1,69 @@
+Passo 1: Criação dos arquivos
+a) /js/controler/ContatoController.js
+b) /js/model/Contato.js
+c) /js/model/ContatoError.js
+d) /js/view/formulario.js
+e) /js/view/tabela.js
+f) /js/main.js
+
+
+Passo 2: Criação dos Models
+a) No arquivo /model/Contato.js crie uma classe chamada "Contato" com duas propriedades: nome e telefone. Deixe essa classe visível para os outros módulos.
+b) No arquivo /model/ContatoError.js crie uma classe chamada "ContatoError" que seja herdeira da classe "Error". Defina no construtor dessa classe o parâmetro "mensagem". Defina também a uma propriedade chamada "message" para esse objeto e passe o parâmetro "mensagem" como valor dessa propriedade.
+
+
+Passo 3: Criação do Controller (/controller/ContatoController.js)
+a) Importe as classes Contato e ContatoError
+b) Crie uma constante chamada "listaContatos" que receba como valor o que vier do localStorage "meusContatos" transformado em Array OU um array vazio.
+c) Crie uma função pública chamada "adicionarContato" com 2 parâmetros: nome e telefone.
+d) Dentro da função, crie um novo objeto do tipo Contato informando os parâmetros nome e telefone para gerar um novo Contato.
+e) Se a propriedade nome do objeto contato criado no passo anterior estiver vazia, lance um erro do tipo ContatoError com a mensagem "Nome do Contato é obrigatório!".
+f) Em seguida, faça outra checagem. Se a propriedade telefone do objeto contato criado estiver vazia, também lance um erro do tipo ContatoError com a mensagem "Telefone do Contato é obrigatório!".
+g) Adicione ao array "listaContatos" o objeto contato criado
+h) Salve a lista no localStorage "meusContatos" realizando a conversão da lista numa string com o comando JSON.stringify()
+i) Crie outra função pública chamada excluirContato com um parâmetro chamado "indice".
+j) Se o indice for menor que 0, lance um erro do tipo "ContatoError" com a mensagem "Índice inválido para exclusão!"
+l) Caso contrário, remova o contato da "listaContatos" utilizando o indice
+m) Salve a "listaContatos" no localStorage "meusContatos" utilizando JSON.stringify()
+n) Por fim, crie uma outra função pública chamada "getContatos" que simplesmente retorne a "listaContatos";
+
+
+Passo 4: Tabela.js
+a) Crie uma função pública chamada "listarContatosTabela"
+b) Dentro dela, crie uma constante chamada "contatos" que receba como valor o retorno da função getContatos do módulo "ContatoController"
+c) Crie uma variável chamada 'linhasTabela' que receba como valor uma string vazia.
+d) Percorra o array "contatos" com um forEach e na função callback crie os parâmetros "contato" e "índice"
+e) Dentro do forEach adicione o código abaixo que monta as linhas da tabela com as informações de cada contato
+            linhasTabela += `<tr>
+                <td>${contato.nome}</td>
+                <td>${contato.telefone}</td>
+                <td>
+                    <button data-indice="${indice}" class="btn btn-danger">
+                        <i style="pointer-events: none;" class="fas fa-times"></i>
+                    </button>
+                </td>
+            </tr>
+            `
+f) Exiba dentro do HTML da tabelaContatos as linhas criadas e armazenadas na variável "linhasTabela"
+g) Antes da declaração da função "listarContatosTabela", chame a função para que ela seja executada assim que o usuário entrar na página.
+
+
+Passo 5: formulario.js
+a) Adicione um evento "click" ao "btnSalvar" e dentro da função callback, crie um bloco try...catch
+b) Dentro do try, crie uma variável "nome" que receba o valor do "inputNome" já com os espaços vazios limpos;
+c) Em seguida crie uma variável chamada "telefone" que receba o valo do "inputTelefone" (também com espaços vazios limpos);
+d) Chame a função adicionarContato do módulo "ContatoController" e passe as informações necessárias para adicionar o novo contato.
+e) Chame a função "listarContatosTabela" do módulo "tabela.js" para mostrar ao usuário  os contatos cadastrados
+f) Limpe o campo inputNome e o inputTelefone
+g) Dentro do catch, verifique se o error é uma instância de ContatoError e se for, exiba a mensagem de erro num alerta
+h) Caso contrário, relance o erro para que ele seja exibido no console
+
+
+Passo 6: Tabela.js (Exclusão)
+a) Adicione um evento "click" à "tabelaContatos" e na função callback especifique o parâmetro "event"
+b) Crie um bloco try... catch
+c) Dentro do bloco try, crie uma variável chamada "indice" que vai receber como valor o dataset "indice" do alvo do evento
+d) SE o valor da variável "indice" for diferente de undefined, chame a função excluirContato do módulo ContatoController passando a variável indice como parâmetro dessa função.
+e) Em seguida, chame a funçaõ "listarContatosTabela" para atualizar a exibição da lista de contatos cadastrados.
+f) Dentro do bloco catch, verifique se a variável "error" presente é uma instância de ContatoError, se for, exiba um alerta com a mensagem de erro
+g) Caso contrário, relance o erro para que ele apareça no console.

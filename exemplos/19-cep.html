@@ -1,0 +1,39 @@
+<meta charset="utf-8">
+<h1>Exemplo prático do uso de Promises: fetch()</h1>
+CEP:<br>
+<input type="text" maxlength="8" id="$campoCep">
+<button id="$btnBuscar">
+    Buscar Endereço
+</button>
+<br><br>
+<div id="$exibirDadosEndereco">
+
+</div>
+
+<script>
+
+    $btnBuscar.onclick = async () => {
+        let cepDigitado = $campoCep.value.trim();
+        
+        if (isNaN(cepDigitado) || cepDigitado.length < 8) {
+            alert('Digite um cep válido!');
+        }
+        else {
+            try {
+                let url = `https://viacep.com.br/ws/${cepDigitado}/json`;
+                const resposta = await fetch(url);
+                const dadosCorreios = await resposta.json();
+                console.log(dadosCorreios);
+                $exibirDadosEndereco.innerHTML = `
+                    ${dadosCorreios.logradouro}, ${dadosCorreios.bairro} - 
+                    ${dadosCorreios.localidade} / ${dadosCorreios.uf}
+                `;
+            } 
+            catch(erro) {
+                alert('Deu ruim!!!');
+                console.error(erro);
+            }
+        }
+    }
+
+</script>

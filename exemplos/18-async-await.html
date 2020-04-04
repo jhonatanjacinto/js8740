@@ -1,0 +1,31 @@
+<meta charset="utf-8">
+<h1>ES6 Promises - Async/Await</h1>
+<script>
+
+    const promessa = new Promise((resolve, reject) => {
+        let resultado = Math.random().toFixed(1) * 10;
+        // throw new Error('Outro erro inesperado');
+        // se for par
+        if (resultado % 2 === 0) {
+            resolve('Promise terminada: O número sorteado é par - ' + resultado);
+        }
+        else {
+            reject('Promise terminada: O número sorteado é impar - ' + resultado);
+        }
+    });
+
+    
+    async function processar()
+    {
+        try {
+            let msg = await promessa;
+            console.log(msg);
+        }
+        catch(erro) {
+            console.warn(erro);
+        }
+    }
+
+    processar();
+
+</script>

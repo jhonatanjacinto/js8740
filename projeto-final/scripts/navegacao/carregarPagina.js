@@ -1,6 +1,6 @@
 import { Endereco } from "../endereco/Endereco.js";
 
-export function carregarPagina(endereco)
+export async function carregarPagina(endereco)
 {
     if (typeof endereco === 'string') {
         endereco = new Endereco(endereco);
@@ -13,6 +13,12 @@ export function carregarPagina(endereco)
         `);
     }
 
-    $janelaPrincipal.src = endereco;
-    $inputEndereco.value = endereco;
+    try {
+        await fetch(endereco);
+        $janelaPrincipal.src = endereco;
+        $inputEndereco.value = endereco;
+    }
+    catch(erro) {
+        alert('Não foi possível carregar o endereço: ' + endereco);
+    }   
 }
